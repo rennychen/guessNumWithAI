@@ -1,3 +1,4 @@
+package Game;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -10,15 +11,15 @@ public class Game {
     Random random = new Random();
     Scanner scan = new Scanner(System.in);
 
-    public Game(String Player){
-        this.Player = Player;
-    }
+//    public Game(String Player){
+//        this.Player = Player;
+//    }
 
     public String getPlayer(){
         return Player;
     }
 
-    public void setPlayer(){
+    public void setPlayer(String Player){
         this.Player = Player;
     }
 
@@ -41,11 +42,11 @@ public class Game {
     public void gameStart(int guessNum){
 
         if (guessNum != AnsNum && guessNum > AnsNum){
-            min = guessNum;
-            System.out.println("答錯了，範圍:" +max + "~" + min +"間的整數");
-            } else if (guessNum != AnsNum && guessNum < AnsNum){
             max = guessNum;
-            System.out.println("答錯了，範圍:" +max + "~" + min +"間的整數");
+            System.out.println("答錯了，範圍:" +min + "~" + max +"間的整數");
+            } else if (guessNum != AnsNum && guessNum < AnsNum){
+            min = guessNum;
+            System.out.println("答錯了，範圍:" +min + "~" + max +"間的整數");
             } else {
             System.out.println("答對了,答案是" + AnsNum);
             }
