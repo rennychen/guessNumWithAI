@@ -1,6 +1,6 @@
-package Computer;
+package computer;
 import java.util.Random;
-import Game.Game;
+import game.Game;
 public class OddAI extends AI {
     Random random = new Random();
 

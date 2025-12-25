@@ -1,5 +1,5 @@
-package Computer;
-import Game.Game;
+package computer;
+import game.Game;
 import java.util.Random;
 
 public class EvenAI extends AI{

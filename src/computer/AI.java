@@ -1,5 +1,5 @@
-package Computer;
-import Game.Game;
+package computer;
+import game.Game;
 
 public abstract class AI {
     private String AIName;

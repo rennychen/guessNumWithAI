@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-import Computer.*;
-import Game.Game;
+import computer.*;
+import game.Game;
 
 public class Main{
     public static void main(String[] args){
@@ -29,7 +29,6 @@ public class Main{
         int guessNum=0;
         int round = 0;
 
-        System.out.println("ans:" +game.getNum()); //test
 
 
         while (!game.isGameOver()){
