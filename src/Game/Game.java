@@ -7,7 +7,9 @@ public class Game {
     private String Player;
     private int max = 100;
     private int min = 0;
+    private boolean gameOver = false;
 
+//    setNum(); // new Game();即自動產生答案
     Random random = new Random();
     Scanner scan = new Scanner(System.in);
 
@@ -48,9 +50,13 @@ public class Game {
             min = guessNum;
             System.out.println("答錯了，範圍:" +min + "~" + max +"間的整數");
             } else {
-            System.out.println("答對了,答案是" + AnsNum);
+            gameOver = true;
             }
 
+    }
+
+    public boolean isGameOver(){
+        return gameOver;
     }
 
 

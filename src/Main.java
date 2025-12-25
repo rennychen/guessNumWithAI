@@ -12,7 +12,7 @@ public class Main{
         Game game = new Game();
         game.setPlayer(player);//創建玩家名稱
 
-        AI[] allAIPlayer = new AI[]{new OddAI("奇數電腦對手"),new EvenAI("偶數電腦對手")}; //建立電腦選手
+        AI[] allAIPlayer = new AI[]{new OddAI("奇數電腦對手",game),new EvenAI("偶數電腦對手",game)}; //建立電腦選手
         ArrayList<String> playerNames = new ArrayList<>(); //建立ArrayList存放玩家&電腦玩家
         playerNames.add(game.getPlayer()); //先把玩家放入ArrayList
         for(AI AIplayer:allAIPlayer){
@@ -31,7 +31,38 @@ public class Main{
 
         System.out.println("ans:" +game.getNum()); //test
 
+
+        while (!game.isGameOver()){
+            System.out.println("本輪猜答案玩家為:" + playerNames.get(round));
+            if(playerNames.get(round) == game.getPlayer()){
+                System.out.print("請輸入"+ game.getMin() + "~" + game.getMax() +"間的整數:");
+                guessNum = scan.nextInt();
+                game.gameStart(guessNum);
+                if(guessNum == game.getNum()){
+                    break;
+                }
+            }else {
+                for(AI AIPlayer : allAIPlayer){
+                    if(AIPlayer.getName().equals(playerNames.get(round))){
+                        AIPlayer.guessNum();
+                        break; //找出對應的AI就跳出
+                    }
+
+                }
+            }
+
+            if (round < playerNames.size()-1){ //防止round數>ArrayList資料筆數
+                round++;
+            } else{
+                round = 0;
+            }
+
+        }
+        System.out.println("答對了，答案是" + game.getNum());
+
+        /*
         do{
+
             System.out.println("本輪猜答案玩家為:" + playerNames.get(round));
             if (playerNames.get(round) == game.getPlayer()){
                 round++;
@@ -39,21 +70,21 @@ public class Main{
                 guessNum = scan.nextInt();
                 game.gameStart(guessNum);
             } else{
-//                playerNames(round).guessNum();
-                System.out.println("電腦猜"); //test
-                if (round < playerNames.size()-1){ //防止round數>ArrayList資料筆數
-                    round++;
-                } else{
-                    round = 0;
+                for(AI AIPlayer : allAIPlayer){
+                    AIPlayer.guessNum();
+                    if (guessNum == game.getNum()){
+                        break;
+                    }
+                    if (round < playerNames.size()-1){ //防止round數>ArrayList資料筆數
+                        round++;
+                    } else{
+                        round = 0;
+                    }
                 }
-
             }
+
         }while(game.getNum() != guessNum);
 
-
-
-
-
-
+         */
     }
 }
